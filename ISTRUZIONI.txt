@@ -1,0 +1,20 @@
+DASHBOARD VENDITE E REDDITIVITÀ
+
+Avvio (dal terminale aperto in questa cartella):
+  python -m pip install -r requirements.txt
+  python -m streamlit run dashboard.py
+
+La dashboard apre un'interfaccia nel browser. Inizialmente mostra dati sintetici riproducibili (2023–2025), chiaramente indicati come dimostrativi.
+
+Caricare un CSV o XLSX con le colonne:
+Order Date, Ship Date, Category, Sub-Category, Sales, Profit, Region, State, Quantity
+
+Date: selezionare la convenzione giorno/mese/anno se pertinente. Si raccomanda il formato ISO YYYY-MM-DD. Numeri: punto decimale, senza simboli euro o separatori delle migliaia. CSV: selezionare il separatore nell'interfaccia.
+
+Pulizia: conversione date e numeri, controllo dei nulli, rimozione duplicati esatti, esclusione delle righe non valide e creazione di Year. Il pannello qualità espone i conteggi e permette di scaricare gli scarti. Valori negativi di Sales e Profit sono mantenuti per includere resi e perdite. I duplicati esatti potrebbero essere ordini distinti se manca un identificativo: verificare il dataset prima di usare i risultati operativamente.
+
+Analisi: vendite e utili per anno, top 5 sottocategorie per fatturato o quantità, utile per categoria e mappa delle vendite. Filtri per anno, categoria e area geografica. Margine = somma utili / somma vendite.
+
+Mappa: coordinate indicative per California, New York, Texas, Florida, Washington, Illinois, Lombardia, Lazio, Piemonte, Veneto, Toscana e Sicilia. Per qualsiasi altra località aggiungere Latitude e Longitude numeriche. Le righe non localizzabili restano nelle altre analisi e vengono segnalate. I punti aggregano per State e coordinate; le tessere richiedono Internet.
+
+Il download finale contiene i dati puliti limitati ai filtri attivi. Nessun dato viene inviato a un servizio di analisi remoto dall'applicazione.
